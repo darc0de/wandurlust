@@ -71,8 +71,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
     res.locals.successMsg = req.flash("success");
     res.locals.errorMsg = req.flash("error");
-    res.locals.currUser = req.user;
-     
+    res.locals.currUser = req.user;     
     next();
 });
 
@@ -158,7 +157,7 @@ const cookieParser = require("cookie-parser");
 
 //Routing 
 app.get("/", (req,res) => {
-    res.send("Working");
+    res.redirect("/listings");
 });
 
 // --------------------------------------- //
