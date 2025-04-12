@@ -1,0 +1,45 @@
+<% layout('/layouts/boilerplate.ejs')-%>
+
+<body>
+    
+    <div class="grantparent-div-form">
+        
+        <div class="parent-div-form">
+            <h2>Log In Wanderlust</h2>
+
+            
+            <form action="/login" class="needs-validation" method="post" novalidate>
+            
+                <div class="mb-2">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="darc0der" required></input>  
+                    <div class="valid-feedback">
+                        acceptable
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter valid username
+                    </div>
+                </div>
+                
+                <div class="mb-5">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+                    <div class="valid-feedback">
+                        acceptable
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter valid password
+                    </div>
+                </div>  
+                 
+                
+                <div class="form-submit-reset">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                    <button type="reset" class="btn btn-primary reset">Reset</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    
+</body>

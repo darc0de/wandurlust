@@ -1,0 +1,19 @@
+<div class="alert-msg-parent-div">
+  <% if( successMsg && successMsg.length) { %>
+
+    <div class="alert alert-success alert-dismissible fade show justify-content-center" role="alert">
+      <%= successMsg %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+          <!-- <span aria-hidden="true">&times;</span> -->
+        </button>
+    </div>
+    <% }%>
+      <% if( errorMsg && errorMsg.length) { %>
+        <div class="alert alert-danger alert-dismissible fade show alert-msg" role="alert">
+          <%= errorMsg %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+              <!-- <span aria-hidden="true">&times;</span> -->
+            </button>
+        </div>
+        <% }%>
+</div>

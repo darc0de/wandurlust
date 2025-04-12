@@ -1,0 +1,174 @@
+<% layout('/layouts/boilerplate.ejs') -%>
+
+    <body>
+        <div class="filter-container">
+            <!-- 1st part -->
+            <div class="filters-wrapper mb-1">
+                <div class="left-arrow-icon arrow">
+                    <i id="left" class="fa-solid fa-angle-left"></i>
+                </div>
+                <ul class="tabs-box">
+                    <li class="tab">
+                        <i class="fa-solid fa-fire"></i>
+                        <p class="tab-text">Trending</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                        <p class="tab-text">Moutain</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-brands fa-fort-awesome"></i>
+                        <p class="tab-text">Castles</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-mountain-city"></i>
+                        <p class="tab-text">Iconic city</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-person-swimming"></i>
+                        <p class="tab-text">Pool</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-umbrella-beach"></i>
+                        <p class="tab-text">Beachfront</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-cow"></i>
+                        <p class="tab-text">Farm</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-city"></i>
+                        <p class="tab-text">Top City</p>
+                    </li>
+
+                    <li class="tab">
+                        <i class="fa-solid fa-water"></i>
+                        <p class="tab-text">Lake</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-fire"></i>
+                        <p class="tab-text">Trending</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                        <p class="tab-text">Moutain</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-brands fa-fort-awesome"></i>
+                        <p class="tab-text">Castles</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-mountain-city"></i>
+                        <p class="tab-text">Iconic city</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-person-swimming"></i>
+                        <p class="tab-text">Pool</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-umbrella-beach"></i>
+                        <p class="tab-text">Beachfront</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-cow"></i>
+                        <p class="tab-text">Farm</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-city"></i>
+                        <p class="tab-text">Top City</p>
+                    </li>
+
+                    <li class="tab">
+                        <i class="fa-solid fa-water"></i>
+                        <p class="tab-text">Lake</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-fire"></i>
+                        <p class="tab-text">Trending</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                        <p class="tab-text">Moutain</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-brands fa-fort-awesome"></i>
+                        <p class="tab-text">Castles</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-mountain-city"></i>
+                        <p class="tab-text">Iconic city</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-person-swimming"></i>
+                        <p class="tab-text">Pool</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-umbrella-beach"></i>
+                        <p class="tab-text">Beachfront</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-cow"></i>
+                        <p class="tab-text">Farm</p>
+                    </li>
+                    <li class="tab">
+                        <i class="fa-solid fa-city"></i>
+                        <p class="tab-text">Top City</p>
+                    </li>
+
+                    <li class="tab">
+                        <i class="fa-solid fa-water"></i>
+                        <p class="tab-text">Lake</p>
+                    </li>
+
+                </ul>
+                <div class="right-arrow-icon arrow"><i id="right" class="fa-solid fa-angle-right"></i></div>
+            </div>
+
+            <div class="filter-div mb-1">
+                <i class="fa-solid fa-sliders"></i>
+                <p>Filters</p>
+            </div>
+
+            <div class="toggle-div mb-1">
+                <p id="toggle-div-p">Display total before taxes</p>
+                <input type="checkbox">
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <% let i=0 %>
+                    <% for(listing of allListingsData) {%>
+                        <div class="col-12 col-xs-12 col-sm-12 col-md-6 col-lg-4  col-xl-4 col-xxl-4 ">
+                            <a href="/listings/<%=listing._id%>" class="card-anchor">
+                                <div class="card">
+                                    <img src="<%=listing.image.url%>" class="card-img-top" alt="..." style="">
+                                    <div class="card-img-overlay"></div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <%=listing.title%>
+                                        </h5>
+                                        <p class="card-text" style="margin-bottom: 0px;">
+                                            490 kilometres away
+                                        </p>
+                                        <p> 4–9 Mar</p>
+                                        <p class="card-text"><span>&#8377;</span><b>
+                                                <%=listing.price ? listing.price.toLocaleString("en-IN")
+                                                    : "not available data" %>
+                                            </b> / night</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <% i++ %>
+                            <% if(i>=50){ %>
+                                <% break; %>
+                                    <% } %>
+                                        <%}%>
+            </div>
+        </div>
+
+
+        <script src="/js/dreaggble_slider_scripting.js"></script>
+        <script src="/js/media.js"></script>
+    </body>

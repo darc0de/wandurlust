@@ -1,0 +1,163 @@
+<% layout('\\layouts\\boilerplate.ejs') -%>
+  <script>
+    const listing = <%- JSON.stringify(listingData) %>;
+    // coordinates.reverse();
+  </script>
+
+  <body>
+    <div class="listing-div">
+      <div class="card mb-3" style="max-width: auto">
+        <div class="row g-0" style="cursor: default">
+          <div class="col-md-7 show-div-img d-flex flex-row-reverse">
+            <img style="max-height: 500px" src="<%=listingData.image.url%>" class="img-fluid" alt="" />
+          </div>
+          <div class="col-md-4">
+            <div class="card-body">
+              <h2 class="card-title">
+                <%=listingData.title%>
+              </h2>
+              <p class="card-text show-listing-decription" style="margin-bottom: 1rem">
+                Owned By :
+                <b style="font-weight: 500">
+                  <%=listingData.owner.username%>
+                </b>
+              </p>
+              <p class="card-text show-listing-decription">
+                <%= listingData.description%>
+              </p>
+              <p class="card-text show-listing-decription" style="margin-bottom: 1rem">
+                4–9 Mar
+              </p>
+              <p class="card-text show-listing-price">
+                <span>&#8377;</span>
+                <b>
+                  <%=listingData.price ? listingData.price.toLocaleString("en-IN") : "not available data" %>
+                </b>
+                <span class="card-text show-listing-decription">/ night</span>
+              </p>
+
+              <!-- 58.6 apply authorization concept -->
+
+              <% if( currUser && currUser._id.equals(listingData.owner._id) ) {%>
+                <div class="form-submit-reset">
+                  <form action="/listings/<%=listingData._id%>/edit" method="get">
+                    <!-- <button type="submit">Edit</button> -->
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                  </form>
+                  <form action="/listings/<%=listingData._id%>?_method=DELETE" method="post">
+                    <!-- <button type="submit">Delete</button> -->
+                    <button type="submit" class="btn btn-primary reset">
+                      Delete
+                    </button>
+                  </form>
+                </div>
+                <%}%>
+
+                  <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% if(currUser) {%>
+      <!-- brack line -->
+      <hr class="hr" style="margin: 0.5rem" />
+
+      <!-- review -->
+      <div class="container p-3">
+        <div class="row">
+          <div class="col-md-3">
+            <form class="needs-validation" action="/listings/<%=listingData._id%>/reviews" method="post" novalidate>
+              <h3>Leave Review</h3>
+              <fieldset class="starability-heartbeat">
+                <legend>First rating:</legend>
+                <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
+                  aria-label="No rating." />
+                <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                <label for="first-rate1" title="Terrible">1 star</label>
+                <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                <label for="first-rate2" title="Not good">2 stars</label>
+                <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                <label for="first-rate3" title="Average">3 stars</label>
+                <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                <label for="first-rate4" title="Very good">4 stars</label>
+                <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                <label for="first-rate5" title="Amazing">5 stars</label>
+              </fieldset>
+
+              <div class="mb-3">
+                <label for="comment" class="form-label">comment</label>
+                <textarea class="form-control" name="review[comment]" id="comment" required></textarea>
+                <div class="valid-feedback">acceptable</div>
+                <div class="invalid-feedback">
+                  Please enter your review in words
+                </div>
+              </div>
+
+              <button class="btn btn-outline-dark" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+        <% }%>
+
+
+
+          <!-- brack line -->
+          <hr class="hr" style="margin: 1rem" />
+
+          <h2>All reviews</h2>
+          <% if(!listingData.reviews.length) {%>
+            <h4>There are no reviews yet</h4>
+            <% } %>
+
+
+              <div class="row review-container">
+                <% for(review of listingData.reviews) {%>
+                  <div class="col-md-3 review-card card m-1">
+                    <div class="card-body p-2 d-flex flex-column justify-content-between">
+                      <div class="mb-2">
+                        <p class="card-text">
+                          <%=review.comment%>
+                        </p>
+                        <p class="starability-result mb-2" data-rating="<%=review.rating%>">
+                        </p>
+
+                        <hr class="hr" style="margin: 2px 0px" />
+                        <p class="card-text">
+                          by @<%=review.author.username%>
+                        </p>
+                      </div>
+                      <%if(currUser && currUser._id.equals(review.author._id)) {%>
+                        <form action="/listings/<%=listingData._id%>/reviews/<%=review._id%>?_method=DELETE"
+                          method="post">
+                          <button type="submit" class="btn btn-dark">Delete</button>
+                        </form>
+                        <%}%>
+                    </div>
+                  </div>
+                  <%}%>
+              </div>
+      </div>
+
+      <!-- brack line -->
+      <div class="container">
+        <hr class="hr" style="margin: 0.5rem 1rem 1.5rem 1rem" />
+      </div>
+
+      <!-- include map feature -->
+      <div class="container">
+
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <h3>Where you'll be</h3>
+            <div id='map' style='max-width: 900px; height: 500px; border-radius: 1rem;'></div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <script src="/js/map.js"></script>
+
+  </body>

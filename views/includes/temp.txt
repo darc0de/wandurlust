@@ -1,0 +1,62 @@
+<nav class="navbar navbar-css navbar-expand-md border-bottom sticky-top">
+
+  <div class="container-fluid nav-container-fluid">
+
+    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"
+        style="color: #fe424b; font-size: 2.4rem ;"></i><span id="nav-icon-name">Wanderlust</span></a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse bg-white" id="navbarNavAltMarkup">
+
+      <ul class="navbar-nav navlink-home-experiences ">
+        <li class="nav-item">
+          <a class="nav-link text-weight-600-hover" aria-current="page" href="/listings">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-weight-600-hover" aria-current="page" href="/listings">Expereince</a>
+        </li>
+      </ul>
+
+
+      <ul class="navbar-nav ms-auto">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link text-weight-600-hover" href="/listings/new">Airbnb your home</a>
+        </li>
+
+        <% if(!currUser) {%>
+          <li class="nav-item">
+            <a class="nav-link text-weight-600-hover" aria-current="page" href="/signup">Sign up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-weight-600-hover" href="/login">Log in</a>
+          </li>
+          <%} else{%>
+            <li class="nav-item">
+              <a class="nav-link text-weight-600-hover" href="/logout">Log out</a>
+            </li>
+            <%}%>
+      </ul>
+
+    </div>
+
+    <!-- <li class="nav-item dropdown" style="list-style-type: none;">
+      <a class="nav-link combine-anchor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa-solid fa-bars" style="color: #000000; font-size: 1.2rem; margin-right: 0.8rem; "></i>
+        <i class="fa-solid fa-user" style="color: #656565; font-size: 1.5rem;"></i>
+      </a>
+    </li> -->
+
+  </div>
+</nav>

@@ -1,0 +1,99 @@
+<% layout('\\layouts\\boilerplate.ejs') -%>
+
+    <body>
+        <div class="grantparent-div-form">
+
+            <div class="parent-div-form">
+                <h2>Edit a Listing</h2>
+
+
+                <form action="/listings/<%= listingData._id%>?_method=PUT" method="post" class="needs-validation"
+                    novalidate enctype="multipart/form-data">
+
+                    <div class="mb-2">
+                        <label for="title" class="form-label">Title</label>
+                        <input value="<%=listingData.title%>" type="text" class="form-control " id="title"
+                            name="listing[title]" placeholder="Enter Name of Listing" required>
+                        <div class="valid-feedback">
+                            acceptable
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter valid title
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea type="text" class="form-control" id="description" name="listing[description]"
+                            placeholder="Enter description" required><%=listingData.description%></textarea>
+                        <div class="valid-feedback">
+                            acceptable
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter valid description
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <img src="<%=orginalImageUrl%>" alt="">
+                    </div>
+
+
+                    <div class="mb-2">
+                        <label for="url" class="form-label">Upload Listing Image</label>
+                        <input type="file" class="form-control" id="url" name="listing[image]"
+                            placeholder="Enter Image/URL link">
+                        <div class="valid-feedback">
+                            acceptable
+                        </div>
+                        <div class="invalid-feedback">
+                            Please select the image
+                        </div>
+                    </div>
+
+                    <div class="mb-2 ">
+                        <label for="price" class="form-label">Price</label>
+                        <input value="<%=listingData.price%>" type="text" class="form-control" id="price"
+                            name="listing[price]" placeholder="Enter a price" required>
+                        <div class="valid-feedback">
+                            acceptable
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter valid price
+                        </div>
+                    </div>
+
+                    <div class="mb-2 ">
+                        <label for="location" class="form-label">Location</label>
+                        <input value="<%=listingData.location%>" type="text" class="form-control" id="location"
+                            name="listing[location]" placeholder="Enter a location" required>
+                        <div class="valid-feedback">
+                            acceptable
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter valid location
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="country" class="form-label">Country</label>
+                        <input value="<%=listingData.country%>" type="text" class="form-control" id="country"
+                            name="listing[country]" placeholder="Enter a country" required>
+                        <div class="valid-feedback">
+                            acceptable
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter valid country
+                        </div>
+                    </div>
+
+                    <div class="form-submit-reset">
+                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="reset" class="btn btn-primary reset">Reset</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        
+    </body>

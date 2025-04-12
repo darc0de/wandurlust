@@ -1,0 +1,81 @@
+<!-- Navbar layout -->
+
+
+<nav class="navbar2 mt-7 border-bottom">
+
+  <div class="nav-wrapper-logo-home">
+    <div class="nav-logo-div">
+      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"
+          style="color: #fe424b; font-size: 2.4rem ;"></i><span id="nav-icon-name">Wanderlust</span></a>
+    </div>
+
+    <div class="nav-home-div">
+      <ul>
+        <li class="navbar-item">
+          <a href="/listings" class="navbar-link">Home</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/listings" class="navbar-link">Expereince</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+  <div class="nav-search-div">
+    <form action="/listings" method="get">
+      <div class="input-div">
+        <input name="search" class="form-control search-input" type="search" placeholder="Search" aria-label="Search">
+        <button class="serch-icon-div serch-icon-combine-div" type="submit">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        </button>
+      </div>
+
+      <!-- <button class="serch-icon-div search-icon-navbar-div">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      </button> -->
+      <div id="search-icon-navbar-div">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      </div>
+      <button class="btn btn-outline-success" type="submit">Search</button>
+
+    </form>
+  </div>
+
+  <div class="nav-account-div">
+    <a href="">
+      <i class="fa-solid fa-bars hamburger-icon"></i>
+    </a>
+
+    <div class="account-icon-div">
+      <i class="fa-solid fa-circle-user account-icon"></i>
+    </div>
+
+    <ul>
+      <li class="navbar-item add-home-1">
+        <a href="/listings/new" class="navbar-link">Airbnb your home</a>
+      </li>
+
+      <% if(!currUser) {%>
+        <li class="navbar-item">
+          <a href="/signup" class="navbar-link">Sign up</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/login" class="navbar-link">Log in</a>
+        </li>
+        <%} else{%>
+          <li class="navbar-item">
+            <a href="/logout" class="navbar-link">Log out</a>
+          </li>
+          <%}%>
+            <hr class="hr" style="margin: 0.3rem;" />
+            <li class="navbar-item add-home-2">
+              <a href="/listings/new" class="navbar-link">Airbnb your home</a>
+            </li>
+
+    </ul>
+  </div>
+
+  <script src="/js/nav_responsive.js"></script>
+</nav>
