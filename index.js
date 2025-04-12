@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const mongoose = require("mongoose");
-const Listing = require(".\\models\\listing.js");
+const Listing = require("./models/listing.js");
 const Review = require("./models/review.js");
 const ejsMate = require("ejs-mate");    // we can also write engine in the place of ejsMate
 
